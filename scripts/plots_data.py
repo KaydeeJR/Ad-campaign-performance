@@ -16,8 +16,8 @@ def plot_hist(df:pd.DataFrame, column: str, color:str)-> None:
     plt.show()  
 def plot_count(df:pd.DataFrame, column:str)->None:
     plt.figure(figsize=(11,7))
-    sns.countplot(df, hue=column)
-    plt.title(f'Distribution of {column}', size=20, fontweight='bold')
+    sns.countplot(df, x=column)
+    plt.title(f'Plot count of {column}', size=20, fontweight='bold')
     plt.show()
 def plot_bar(df:pd.DataFrame, _col: str, y_col: str, title: str, xlabel: str, ylabel: str)->None:
     plt.figure(figsize=(11, 7))
@@ -62,9 +62,16 @@ def plot_pi(data, labels, title) -> None:
     plt.show()    
 def figure_att(fig, title, titlex, titley, size, sizexy, weight)-> None:
     fig.set_title(title, size=size, weight=weight)
-    figure.set_xlabel(titlex, size=sizexy, weight=weight)
-    figure.set_ylabel(titley, size=sizexy, weight=weight)           
-
+    fig.set_xlabel(titlex, size=sizexy, weight=weight)
+    fig.set_ylabel(titley, size=sizexy, weight=weight)           
+def get_value(fig):
+    for p in fig.patches:
+        fig.annotate(format(p.get_height()), (p.get_x() + p.get_width() / 2.,
+                                                     p.get_height()), ha='center', va='center',
+                            xytext=(0, 10), textcoords='offset points')
+def rotate(figure, rotate):
+    for it in figure.get_xticklabels():
+        it.set_rotation(rotate)
 
 # In[ ]:
 

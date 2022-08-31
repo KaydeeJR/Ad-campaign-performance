@@ -73,3 +73,10 @@ def get_value(fig):
 def rotate(figure, rotate):
     for it in figure.get_xticklabels():
         it.set_rotation(rotate)
+
+def plot_unstacked_bar(df: pd.DataFrame, title: str, xlabel: str, ylabel: str) -> None:
+    ax = df.plot(kind='bar')
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.set_title(title)
+    plt.show()

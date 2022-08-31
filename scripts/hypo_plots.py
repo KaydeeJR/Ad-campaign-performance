@@ -10,12 +10,15 @@ plt.style.use('ggplot')
 
 def plot_norm_dist(ax, mu, std, with_CI=False, sig_level=0.05, label=None):
     """Adds a normal distribution to the axes provided
+
     Example:
         plot_norm_dist(ax, 0, 1)  # plots a standard normal distribution
+
     Parameters:
         ax (matplotlib axes)
         mu (float): mean of the normal distribution
         std (float): standard deviation of the normal distribution
+
     Returns:
         None: the function adds a plot to the axes object provided
     """
@@ -29,12 +32,15 @@ def plot_norm_dist(ax, mu, std, with_CI=False, sig_level=0.05, label=None):
 
 def plot_binom_dist(ax, n, p, label=None):
     """Adds a binomial distribution to the axes provided
+
     Example:
         plot_binom_dist(ax, 0, 1)  # plots a standard normal distribution
+
     Parameters:
         ax (matplotlib axes)
         mu (float): mean of the normal distribution
         sig (float): standard deviation of the normal distribution
+
     Returns:
         None: the function adds a plot to the axes object provided
     """
@@ -46,12 +52,15 @@ def plot_binom_dist(ax, n, p, label=None):
 def plot_CI(ax, mu, s, sig_level=0.05, color='grey'):
     """Calculates the two-tailed confidence interval and adds the plot to
     an axes object.
+
     Example:
         plot_CI(ax, mu=0, s=stderr, sig_level=0.05)
+
     Parameters:
         ax (matplotlib axes)
         mu (float): mean
         s (float): standard deviation
+
     Returns:
         None: the function adds a plot to the axes object provided
     """
@@ -65,14 +74,19 @@ def plot_null(ax, stderr):
     """Plots the null hypothesis distribution where if there is no real change,
     the distribution of the differences between the test and the control groups
     will be normally distributed.
+
     The confidence band is also plotted.
+
     Example:
         plot_null(ax, stderr)
+
     Parameters:
         ax (matplotlib axes)
         stderr (float): the pooled standard error of the control and test group
+
     Returns:
         None: the function adds a plot to the axes object provided
+
     """
     plot_norm_dist(ax, 0, stderr, label="Null")
     plot_CI(ax, mu=0, s=stderr, sig_level=0.05)
@@ -82,12 +96,16 @@ def plot_alt(ax, stderr, d_hat):
     """Plots the alternative hypothesis distribution where if there is a real
     change, the distribution of the differences between the test and the
     control groups will be normally distributed and centered around d_hat
+
     The confidence band is also plotted.
+
     Example:
         plot_alt(ax, stderr, d_hat=0.025)
+
     Parameters:
         ax (matplotlib axes)
         stderr (float): the pooled standard error of the control and test group
+
     Returns:
         None: the function adds a plot to the axes object provided
     """
@@ -98,8 +116,10 @@ def abplot(N_A, N_B, bcr, d_hat, sig_level=0.05, show_power=False,
            show_alpha=False, show_beta=False, show_p_value=False,
            show_legend=True):
     """Example plot of AB test
+
     Example:
         abplot(n=4000, bcr=0.11, d_hat=0.03)
+
     Parameters:
         n (int): total sample size for both control and test groups (N_A + N_B)
         bcr (float): base conversion rate; conversion rate of control
@@ -107,6 +127,7 @@ def abplot(N_A, N_B, bcr, d_hat, sig_level=0.05, show_power=False,
             groups, sometimes referred to as **minimal detectable effect** when
             calculating minimum sample size or **lift** when discussing
             positive improvement desired from launching a change.
+
     Returns:
         None: the function plots an AB test as two distributions for
         visualization purposes
@@ -194,13 +215,17 @@ def show_area(ax, d_hat, stderr, sig_level, area_type='power'):
 
 def zplot(area=0.95, two_tailed=True, align_right=False):
     """Plots a z distribution with common annotations
+
     Example:
         zplot(area=0.95)
+
         zplot(area=0.80, two_tailed=False, align_right=True)
+
     Parameters:
         area (float): The area under the standard normal distribution curve.
         align (str): The area under the curve can be aligned to the center
             (default) or to the left.
+
     Returns:
         None: A plot of the normal distribution with annotations showing the
         area under the curve and the boundaries of the area.
@@ -263,12 +288,14 @@ def zplot(area=0.95, two_tailed=True, align_right=False):
 
 def abplot_CI_bars(N, X, sig_level=0.05, dmin=None):
     """Returns a confidence interval bar plot for multivariate tests
+
     Parameters:
         N (list or tuple): sample size for all groups
         X (list or tuple): number of conversions for each variant
         sig_level (float): significance level
         dmin (float): minimum desired lift; a red and green dashed lines are
             shown on the plot if dmin is provided.
+
     Returns:
         None: A plot of the confidence interval bars is returned inline.
     """
@@ -323,10 +350,12 @@ def abplot_CI_bars(N, X, sig_level=0.05, dmin=None):
 
 def funnel_CI_plot(A, B, sig_level=0.05):
     """Returns a confidence interval bar plot for multivariate tests
+
     Parameters:
         A (list of tuples): (sample size, conversions) for control group funnel
         B (list of tuples): (sample size, conversions) for test group funnel
         sig_level (float): significance level
+
     Returns:
         None: A plot of the confidence interval bars is returned inline.
     """

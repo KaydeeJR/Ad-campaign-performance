@@ -18,5 +18,5 @@ As a Machine learning engineer in SmartAd, one of your tasks is to design a reli
 
 `Janerose Njogu`
 `Egide Kamuzinzi`
-`Yohans Moges`
+`Yonas Moges`
 `Nahom Habtemichael`

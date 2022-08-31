@@ -165,7 +165,7 @@ def show_area(ax, d_hat, stderr, sig_level, area_type='power'):
     # Fill between upper significance boundary and distribution for alternative
     # hypothesis
     if area_type == 'power':
-        ax.fill_between(x, 0, alternative.pdf(x), color='green', alpha='0.25',
+        ax.fill_between(x, 0, alternative.pdf(x), color='green', alpha=0.25,
                         where=(x > right))
         ax.text(-3 * stderr, null.pdf(0),
                 'power = {0:.3f}'.format(1 - alternative.cdf(right)),
@@ -175,7 +175,7 @@ def show_area(ax, d_hat, stderr, sig_level, area_type='power'):
     # Fill between upper significance boundary and distribution for null
     # hypothesis
     if area_type == 'alpha':
-        ax.fill_between(x, 0, null.pdf(x), color='green', alpha='0.25',
+        ax.fill_between(x, 0, null.pdf(x), color='green', alpha=0.25,
                         where=(x > right))
         ax.text(-3 * stderr, null.pdf(0),
                 'alpha = {0:.3f}'.format(1 - null.cdf(right)),
@@ -185,7 +185,7 @@ def show_area(ax, d_hat, stderr, sig_level, area_type='power'):
     # Fill between distribution for alternative hypothesis and upper
     # significance boundary
     if area_type == 'beta':
-        ax.fill_between(x, 0, alternative.pdf(x), color='green', alpha='0.25',
+        ax.fill_between(x, 0, alternative.pdf(x), color='green', alpha=0.25,
                         where=(x < right))
         ax.text(-3 * stderr, null.pdf(0),
                 'beta = {0:.3f}'.format(alternative.cdf(right)),
@@ -224,7 +224,7 @@ def zplot(area=0.95, two_tailed=True, align_right=False):
         ax.vlines(right, 0, norm.pdf(right), color='grey', linestyle='--')
         ax.vlines(left, 0, norm.pdf(left), color='grey', linestyle='--')
 
-        ax.fill_between(x, 0, y, color='grey', alpha='0.25',
+        ax.fill_between(x, 0, y, color='grey', alpha=0.25,
                         where=(x > left) & (x < right))
         plt.xlabel('z')
         plt.ylabel('PDF')
@@ -238,7 +238,7 @@ def zplot(area=0.95, two_tailed=True, align_right=False):
         if align_right:
             left = norm.ppf(1-area)
             ax.vlines(left, 0, norm.pdf(left), color='grey', linestyle='--')
-            ax.fill_between(x, 0, y, color='grey', alpha='0.25',
+            ax.fill_between(x, 0, y, color='grey', alpha=0.25,
                             where=x > left)
             plt.text(left, norm.pdf(left), "z = {0:.3f}".format(left),
                      fontsize=12, rotation=90, va="bottom", ha="right")
@@ -246,7 +246,7 @@ def zplot(area=0.95, two_tailed=True, align_right=False):
         else:
             right = norm.ppf(area)
             ax.vlines(right, 0, norm.pdf(right), color='grey', linestyle='--')
-            ax.fill_between(x, 0, y, color='grey', alpha='0.25',
+            ax.fill_between(x, 0, y, color='grey', alpha=0.25,
                             where=x < right)
             plt.text(right, norm.pdf(right), "z = {0:.3f}".format(right),
                      fontsize=12, rotation=90, va="bottom", ha="left")

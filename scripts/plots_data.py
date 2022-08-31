@@ -1,20 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-
+import sys
 import pandas as pd
+import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-<<<<<<< HEAD:scripts/plot_data.py
-
-class PlotData:
-    def plot_hist(df: pd.DataFrame, column: str, color: str) -> None:
-        sns.displot(data=df, x=column, color=color,
-                    kde=True, height=8, aspect=2)
-        plt.title(f'Distribution of {column}', size=20, fontweight='bold')
-        plt.show()
-=======
 def plot_hist(df:pd.DataFrame, column: str, color:str)-> None:
     sns.displot(data=df, x=column, color=color, kde=True, height=8, aspect=2)
     plt.title(f'Distribution of {column}', size=20, fontweight='bold')
@@ -84,61 +73,3 @@ def get_value(fig):
 def rotate(figure, rotate):
     for it in figure.get_xticklabels():
         it.set_rotation(rotate)
->>>>>>> fdf75e4bd14cbf68c7bcb7ae48b4a8b1fa21fbf0:scripts/plots_data.py
-
-    def plot_count(df: pd.DataFrame, column: str) -> None:
-        plt.figure(figsize=(11, 7))
-        sns.countplot(df, hue=column)
-        plt.title(f'Distribution of {column}', size=20, fontweight='bold')
-        plt.show()
-
-    def plot_bar(df: pd.DataFrame, x_col: str, y_col: str, title: str, xlabel: str, ylabel: str) -> None:
-        plt.figure(figsize=(11, 7))
-        sns.barplot(data=df, x=x_col, y=y_col)
-        plt.title(title, size=20)
-        plt.xticks(rotation=75, fontsize=14)
-        plt.yticks(fontsize=14)
-        plt.xlabel(xlabel, fontsize=16)
-        plt.ylabel(ylabel, fontsize=16)
-
-    def plot_heatmap(df: pd.DataFrame, title: str, cbar=False) -> None:
-        plt.figure(figsize=(11, 7))
-        sns.heatmap(df, annot=True, cmap='viridis', vmin=0,
-                    vmax=1, fmt='.2f', linewidths=.7, cbar=cbar)
-        plt.title(title, size=18, fontweight='bold')
-        plt.show()
-
-    def plot_box(df: pd.DataFrame, x_col: str, title: str) -> None:
-        plt.figure(figsize=(11, 7))
-        sns.boxplot(data=df, x=x_col)
-        plt.title(title, size=20)
-        plt.xticks(rotation=75, fontsize=14)
-        plt.show()
-
-    def plot_box_multi(df: pd.DataFrame, x_col: str, y_col: str, title: str) -> None:
-        plt.figure(figsize=(11, 7))
-        sns.boxplot(data=df, x=x_col, y=y_col)
-        plt.title(title, size=20)
-        plt.xticks(rotation=75, fontsize=14)
-        plt.yticks(fontsize=14)
-        plt.show()
-
-    def plot_scatter(df: pd.DataFrame, x_col: str, y_col: str, title: str, hue: str, style: str) -> None:
-        plt.figure(figsize=(11, 7))
-        sns.scatterplot(data=df, x=x_col, y=y_col, hue=hue, style=style)
-        plt.title(title, size=20)
-        plt.xticks(fontsize=14)
-        plt.yticks(fontsize=14)
-        plt.show()
-
-    def plot_pi(data, labels, title) -> None:
-        plt.figure(figsize=(11, 7))
-        colors = sns.color_palette('bright')
-        plt.pie(data, labels=labels, colors=colors, autopct='%.0f%%')
-        plt.title(title, size=20)
-        plt.show()
-
-    def figure_att(fig, title, titlex, titley, size, sizexy, weight) -> None:
-        fig.set_title(title, size=size, weight=weight)
-        fig.set_xlabel(titlex, size=sizexy, weight=weight)
-        fig.set_ylabel(titley, size=sizexy, weight=weight)
